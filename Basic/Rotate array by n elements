@@ -1,0 +1,33 @@
+/**
+* created by VIKAS SINGH
+* on 1 FEB 2016
+* For problem statement visit geeksforgeeks.com
+*/
+
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int n = stdin.nextInt();
+			int rf = stdin.nextInt(); // rotate factor
+			int arr[] = new int[n];
+			for(int i=0 ; i<n ; i++) 
+				arr[i] = stdin.nextInt();
+			
+			for(int i=rf ; i<n ; i++)
+				System.out.print(arr[i] + " ");
+			
+			for(int i=0 ; i<rf ; i++)
+				System.out.print(arr[i] + " ");
+			
+			System.out.println("");
+			
+		}
+
+	}
+	
+}
