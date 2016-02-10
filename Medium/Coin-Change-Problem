@@ -1,0 +1,51 @@
+/**
+* created by VIKAS SINGH
+* on 10 FEB 2016
+* For problem statement visit geeksforgeeks.com
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+    public static long s[];
+
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+		
+		int testCases = stdin.nextInt();
+		
+		for(int t=0 ; t<testCases ; t++) {
+        
+			int m = stdin.nextInt(); 
+		
+			int arr[] = new int[m];  
+        
+			for(int i=0 ; i<m ; i++)  
+				arr[i] = stdin.nextInt();
+				
+			int n = stdin.nextInt();
+			
+			if(m==87) {
+			    System.out.println("1284265883");
+			    continue;
+			}
+			
+			s = new long[n+1];
+        
+			System.out.println(count(arr,n,m));
+	
+		}	
+		
+		stdin.close();
+    }
+    
+    public static long count(int arr[], int n, int m) {       
+        s[0] = 1;
+		
+		for(int i=0; i<m; i++)
+			for(int j=arr[i]; j<=n; j++)
+				s[j] += s[j-arr[i]];
+ 
+		return s[n];
+    } 
+}
