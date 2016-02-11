@@ -1,0 +1,70 @@
+/**
+* created by VIKAS SINGH
+* on 12 FEB 2016
+* For problem statement visit geeksforgeeks.org
+*/
+
+import java.util.Scanner;
+
+public class Solution {
+			
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t!=testCases ; ++t) {
+			int n = stdin.nextInt();
+			
+			int arr[] = new int[n];
+			
+			int maximum = Integer.MIN_VALUE;   // it is required when all values are negative than just print max value
+			for(int i=0 ; i<n ; i++) { 			// Since in case of all negative values both answer string has 0 length
+				arr[i] = stdin.nextInt();		// then we can print only this value
+				if(maximum<arr[i])
+					maximum = arr[i];
+			}
+			
+			String ans = "";	// This is our final ans string
+			String temp = arr[0] + " ";  // this is ou temp string used while making decisions
+			long sum = arr[0];	
+			long maxSum = Integer.MIN_VALUE;  //  this is our final max sum
+			
+			// Idea used here is simple if value is positive update sum and temp string. When encounter negative number
+			// check if maxSum is less than sum is so update ans string and maxSum and set sum=0 ans temp=""
+			for(int i=1 ; i<n ; i++) {
+				if(arr[i]<0) {
+					if(maxSum<sum) {
+						maxSum = sum;
+						ans = temp;
+					}
+					else if(maxSum==sum && ans.length()<temp.length()) {  // this is used when maxsum = sum then see ans on the basis of string length
+						maxSum = sum;
+						ans = temp;
+					}
+					temp = "";
+					sum = 0;
+					continue;
+				}
+				
+				if(sum<0) {
+					sum = 0;
+					temp = "";
+				}	
+				
+				sum += arr[i];
+				temp += arr[i] + " ";
+				
+			}
+			
+			if(maxSum<sum) {  // this is final testing required suppose if no negative number encounter then no updation takes place therefore
+				maxSum = sum;
+				ans = temp;
+			}
+			
+			if(ans.length()==0)  // this is used to handle all negative value cases as discussed above
+				ans = maximum + "";
+			
+			System.out.println(ans);
+		}
+		stdin.close();	
+	}
+}
