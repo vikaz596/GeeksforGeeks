@@ -1,0 +1,25 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int a = stdin.nextInt();
+			int b = stdin.nextInt();
+			int n = stdin.nextInt();
+			
+			int ans = a + (n-1)*(b-a);
+			System.out.println(ans);
+			
+		}
+	}
+}
