@@ -1,3 +1,9 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
 import java.util.Scanner;
 
 class GFG {
