@@ -1,0 +1,62 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+class GFG {
+	
+	public static void main (String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			String s1 = br.readLine().trim();
+			String s2 = br.readLine().trim();
+			
+			if(s1.length() != s2.length()) {
+				System.out.println("0");
+				continue;
+			}
+			
+			HashMap<Character,Character> hm = new HashMap<Character,Character>();
+			
+			int len = s1.length();
+			boolean check1=true;
+			boolean check2=true;
+			
+			for(int i=0 ; i<len ; i++) {
+				if(hm.containsKey(s1.charAt(i))) {
+					if(hm.get(s1.charAt(i)) != s2.charAt(i)) {
+						check1=false;
+						break;
+					}
+				}
+				else
+					hm.put(s1.charAt(i),s2.charAt(i));
+			}
+			
+			hm.clear();
+			for(int i=0 ; i<len ; i++) {
+				if(hm.containsKey(s2.charAt(i))) {
+					if(hm.get(s2.charAt(i)) != s1.charAt(i)) {
+						check2=false;
+						break;
+					}
+				}
+				else
+					hm.put(s2.charAt(i),s1.charAt(i));
+			}
+			
+			if(check1 & check2)
+				System.out.println("1");
+			else
+				System.out.println("0");
+		}
+		
+		br.close();
+	}
+}
