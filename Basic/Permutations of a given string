@@ -1,0 +1,49 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	
+	public static void generatePermutation(char arr[], int k, int n) {
+		if(k==n)
+			print(arr);
+		
+		else {
+			for(int i=k ; i<=n ; i++) {
+				swap(arr,i,k);
+				generatePermutation(arr,k+1,n);
+				swap(arr,i,k);
+			}
+		}
+	}
+
+	private static void swap(char arr[],int a, int b) {
+		char temp = arr[a];
+		arr[a] = arr[b];
+		arr[b] = temp;
+	}
+
+	private static void print(char arr[]) {
+		for(int i=0 ; i<arr.length ; i++)
+			System.out.print(arr[i]);
+		
+		System.out.print(" ");
+	}	
+
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		for(int t=0 ; t<testCases ; t++) {
+			String str = stdin.nextLine();
+			char x[] = str.toCharArray();
+			generatePermutation(x,0,str.length()-1);
+			System.out.println("");
+		}	
+		stdin.close();
+    }
+}
