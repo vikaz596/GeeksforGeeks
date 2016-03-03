@@ -1,0 +1,36 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+#include <iostream>
+using namespace std;
+void check(int,int,int);
+int res=0;
+int main() {
+	int num;
+	cin>>num;
+	for(int i=0;i<num;i++){
+		int input;
+		cin>>input;
+		int a[input];
+		for(int q=0;q<input;q++)
+		cin>>a[q];
+		for(int i=0;i<input;i++){
+			for(int j=i+1;j<input;j++){
+				for(int k=j+1;k<input;k++){
+					check(a[i],a[j],a[k]);
+				}
+			}
+		}
+		cout<<"Total number of triangles possible is "<<res<<endl;
+	    res = 0;
+	}
+	return 0;
+}
+
+void check(int x,int y,int z){
+	if (x+y>z && y+z>x && x+z>y)
+	res++;
+}
