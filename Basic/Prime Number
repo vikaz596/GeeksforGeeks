@@ -1,0 +1,48 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+		    
+			int num = stdin.nextInt();
+			
+			if(num==1) {
+			    System.out.println("Yes");
+			    continue;
+			}
+			
+			if(num==2 || num==3) {
+				System.out.println("Yes");
+				continue;
+			}
+
+			if(num%2==0) {
+				System.out.println("No");
+				continue;
+			}
+
+			int mark=0;
+			for(int i=3 ; i<=Math.sqrt(num) ; i++) {
+				if(num%i==0) {
+					mark=1;
+					break;
+				}	
+			}
+
+			if(mark==1)
+				System.out.println("No");
+
+			else
+				System.out.println("Yes");	
+		}
+		stdin.close();	
+	}
+}
