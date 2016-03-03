@@ -1,0 +1,46 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static int getSum(int n) {
+		int sum=0;
+		while(n>0) {
+			int r = n%10;
+			sum += getFactorial(r);
+			n = n/10;
+		}
+		return sum;
+	}
+	
+	public static int getFactorial(int n) {
+		if(n==0 || n==1)
+			return 1;
+		
+		int fact=1;
+		for(int i=2 ; i<=n ; i++)
+			fact = fact*i;
+		
+		return fact;
+	}
+
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int n = stdin.nextInt();
+			int sum = getSum(n);
+			if(n==sum)
+				System.out.println("Strong");
+			
+			else
+				System.out.println("Not Strong");
+		}
+	}
+}
