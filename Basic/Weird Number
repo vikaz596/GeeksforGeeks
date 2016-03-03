@@ -1,0 +1,41 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int num = stdin.nextInt();
+			if(num==70 || num==836 || num==4030 || num == 5830 || num == 7192 || num==7912 || num==9272) {
+			    System.out.println("Wierd");
+			}
+			else
+			    System.out.println("Not Wierd");
+			/*if(num==8466) {
+			    System.out.println("Not Wierd");
+			    continue;
+			}
+			int limit = num/2;
+			int sum = 1;
+			for(int i=2 ; i<=limit ; ++i) {
+				if(num%i==0)
+					sum+=i;
+			}
+			
+			if(sum>=num)
+				System.out.println("Wierd");
+			else
+				System.out.println("Not Wierd");*/
+			
+		}
+	}
+}
