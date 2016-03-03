@@ -1,0 +1,49 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	
+   public static int findPath(int arr[][]) {
+	   int n = arr[0].length-1;
+	   //int ans[][] = new int[n][n];
+	   
+	   for(int k=1 ; k<=n ; k++) {
+		   for(int i=1 ; i<=n ; i++) {
+			   for(int j=1 ; j<=n ; j++) {
+				   if(arr[i][j] > arr[i][k] + arr[k][j]) 
+						arr[i][j] = arr[i][k] + arr[k][j];	
+			   }
+		   }
+	   }
+	   
+	   return arr[1][n];
+   }	
+
+   public static void main(String[] args) {
+       Scanner stdin = new Scanner(System.in);
+       int testCases = stdin.nextInt();
+	   for(int t=0 ; t<testCases ; ++t) {
+		
+			int n = stdin.nextInt();
+			int arr[][] = new int[n+1][n+1];
+			
+			for(int i=0 ; i<=n ; i++) {
+				for(int j=0 ; j<=n ; j++) {
+					arr[i][j] = 99999;
+				}
+			}
+			
+			for(int i=1 ; i<n ; i++) {
+				arr[i][i+1]=1;
+				if(3*i<=n)
+					arr[i][3*i]=1;
+			}
+	   System.out.println(findPath(arr));
+	   }
+   }
+}
