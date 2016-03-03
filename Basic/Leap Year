@@ -1,0 +1,30 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int num=stdin.nextInt();
+			if(num%400==0)
+				System.out.println("Yes");
+			
+			else if(num%100==0)
+				System.out.println("No");
+			
+			else if(num%4==0)
+				System.out.println("Yes");
+			
+			else
+				System.out.println("No");
+		}
+		stdin.close();	
+	}
+}
