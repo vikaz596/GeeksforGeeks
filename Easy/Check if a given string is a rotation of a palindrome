@@ -1,0 +1,58 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	
+	public static boolean isPalindrome(String str) {
+		
+		int l = 0;
+		int h = str.length() - 1;
+ 
+		
+		while (h > l)
+			if (str.charAt(l++) != str.charAt(h--))
+				return false;
+ 
+		
+		return true;
+	}
+ 
+	public static boolean checkRotationPalindrome(String str) {
+		// If string iteself is palindrome
+		if (isPalindrome(str))
+			return true;
+ 
+		// Now try all rotations one by one
+		int n = str.length();
+		for (int i = 0; i < n-1; i++) {
+			String str1 = str.substring(i+1);
+			String str2 = str.substring(0, i+1);
+ 
+			// Check if this rotation is palindrome
+			if (isPalindrome(str1 + str2))
+            return true;
+		}
+		return false;
+	}
+	
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		for(int t=0 ; t<testCases ; t++) {
+			String str = stdin.nextLine();
+			str = str.toLowerCase();
+			if(checkRotationPalindrome(str))
+				System.out.println("1");
+			else
+				System.out.println("0");
+		}
+		
+		stdin.close();
+	}
+}
