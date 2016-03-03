@@ -1,0 +1,31 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			long b = stdin.nextLong();
+			
+			long arr[] = new long[n];
+			for(int i=0 ; i<n ; i++)
+				arr[i] = stdin.nextLong();
+			
+			for(int i=0 ; i<n ; i++) {
+				if(arr[i] == b)
+					b = b*2;
+			}
+			
+			System.out.println(b);
+		}
+		stdin.close();
+	}
+}
