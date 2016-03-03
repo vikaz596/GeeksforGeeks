@@ -1,0 +1,38 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			
+			if(n%2!=0) {
+				System.out.println("0");
+				continue;
+			}
+			
+			int limit = n/2;
+			
+			int count=0;
+			int i=1;
+			int j=limit-1;
+			while(i<j) {
+				count++;
+				i++;
+				j--;
+			}	
+			
+			System.out.println(count);
+		}
+		
+		stdin.close();
+	}
+}
