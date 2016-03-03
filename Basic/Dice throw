@@ -1,0 +1,39 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	
+	public static long diceThrow(int faces, int nDices, int k) {
+
+		long table[][] = new long[nDices+1][k+1];
+		
+		for (int j = 1; j <= faces && j <= k; j++)
+			table[1][j] = 1;
+		
+		for (int i = 2; i <= nDices; i++)
+			for (int j = 1; j <= k; j++)
+				for (int z = 1; z <= faces && z < j; z++)
+					table[i][j] += table[i-1][j-z];
+				
+		return table[nDices][k];		
+	}
+
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int faces = stdin.nextInt();
+			int nDices = stdin.nextInt();
+			int k = stdin.nextInt();
+			
+			System.out.println(diceThrow(faces,nDices,k));	
+		}	
+		stdin.close();
+    }
+}
