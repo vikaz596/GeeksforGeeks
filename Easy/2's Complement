@@ -1,0 +1,50 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		
+		for(int t=0 ; t<testCases ; t++) {
+		    String s = stdin.nextLine();
+		    int len = s.length();
+		    int x = Integer.parseInt(s,2);
+			if(x==0) {
+				System.out.print("1");
+				while(len>0) {
+					System.out.print("0");
+					len--;
+				}	
+				
+				System.out.println("");
+				continue;
+			}	
+			
+		    x = ~x;
+		    x = x+1;
+			
+			s="";
+			for(int i=31 ; i>=0 ; i--) {
+				int check = (x>>i)&1;
+				if(check==1)
+					s += "1";
+				else
+					s += "0";
+			}
+			
+		    String ans = new StringBuffer(s).reverse().toString();
+		    
+		    for(int i=len-1 ; i>=0 ; i--)
+		        System.out.print(ans.charAt(i));
+		        
+		    System.out.println("");      
+		}
+	}
+}
