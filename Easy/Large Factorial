@@ -1,0 +1,32 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+
+class GFG {
+	
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int num = Integer.parseInt(br.readLine().trim());
+			if(num==0 || num==1) {
+				System.out.println("1");
+				continue;
+			}
+
+			BigInteger fact = new BigInteger("1");
+			for(int i=2 ; i!=num+1 ; i++)
+				fact = fact.multiply(new BigInteger(i+""));
+
+			System.out.println(fact.toString());			
+		}	
+		br.close();
+    }
+}
