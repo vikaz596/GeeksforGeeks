@@ -1,0 +1,40 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		for(int t=0 ; t<testCases ; t++) {
+			
+			String x1 = stdin.nextLine();
+			long num = Long.parseLong(x1);
+			String x2 = "" + (num*num);
+			
+			int len1 = x1.length();
+			int len2 = x2.length();
+			
+			int check=0;
+			int j=len2-1;
+			for(int i=len1-1 ; i>=0 ; --i) {
+				if(x1.charAt(i)!=x2.charAt(j)) 
+					check=1;
+				
+				j--;	
+			}
+			
+			if(check==0)
+				System.out.println("Automorphic");
+			else
+				System.out.println("Not Automorphic");
+		}
+	}
+}
