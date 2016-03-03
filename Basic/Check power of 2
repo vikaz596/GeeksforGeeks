@@ -1,0 +1,39 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+		    long num = stdin.nextLong();
+
+		    /*if(num==1) {
+		        System.out.println("YES");
+		        continue;
+		    }*/
+		    
+		    int count=0;
+		    while(num>0) {
+		        long temp = num&1;
+		        if(temp==1) 
+		            count++;
+		            
+		        num = num >> 1;
+		    }          
+		   
+		    if(count==1)
+		        System.out.println("YES");
+		    else
+		        System.out.println("NO");
+	    }
+	}    
+}
