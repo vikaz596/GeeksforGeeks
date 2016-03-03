@@ -1,0 +1,43 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {	
+
+   public static void main(String[] args) {
+       Scanner stdin = new Scanner(System.in);
+       int testCases = stdin.nextInt();
+	   for(int t=0 ; t<testCases ; ++t) {
+		
+			int n = stdin.nextInt();
+			String test = n + "";
+			if(test.length()<3){
+				System.out.println("Number should be atleast three digits");
+				continue;
+			}
+				
+			String str = n + "" + (n*2) + "" + (n*3) + "";
+			
+			int arr[] = new int[10];
+			int len = str.length();
+			for(int i=0 ; i<len ; i++)
+				arr[Integer.parseInt(str.charAt(i)+"")]++;
+				
+			
+			int check=1;
+			for(int i=1 ; i<10 ; i++) {
+				if(arr[i]!=1)
+					check=0;
+			}
+			
+			if(check==1)
+				System.out.println("Fascinating");
+			else
+				System.out.println("Not Fascinating");
+	   }	
+   }
+}
