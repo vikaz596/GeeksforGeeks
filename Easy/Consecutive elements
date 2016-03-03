@@ -1,0 +1,34 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+class GFG {
+	
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			
+			String str = br.readLine().trim();
+			int len = str.length();
+			char temp = str.charAt(0);
+			System.out.print(temp);
+			
+			for(int i=1 ; i<len ; i++) {
+				if(temp==str.charAt(i))
+					continue;
+				else {
+					temp = str.charAt(i);
+					System.out.print(temp);
+				}	
+			}
+			System.out.println("");
+		}		
+		br.close();
+    }
+}
