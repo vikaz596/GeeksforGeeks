@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+		    int n = stdin.nextInt();
+		    String str = Integer.toBinaryString(n);
+		    int len = str.length();
+		    for(int i=len ; i<8 ; i++)
+		        str = "0" + str;
+		        
+		    String part1 = str.substring(0,4);
+		    String part2 = str.substring(4);
+		    
+		    str = part2 + part1;
+		    int ans = Integer.parseInt(str,2);
+		    System.out.println(ans);
+		}
+	}
+}
