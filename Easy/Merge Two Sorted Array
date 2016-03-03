@@ -1,0 +1,63 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+class GFG {
+	
+	public static void mergeSort(String s1[], String s2[], int len1, int len2) {
+		int i=0;
+		int j=0;
+		for( ; i<len1 && j<len2 ; ) {
+			if(Integer.parseInt(s1[i])>=Integer.parseInt(s2[j])) {
+				System.out.print(Integer.parseInt(s1[i]) + " ");
+				++i;
+			}
+			else if(Integer.parseInt(s1[i])<Integer.parseInt(s2[j])) {
+				System.out.print(Integer.parseInt(s2[j]) + " ");
+				++j;
+			}
+		}
+		if(i!=len1) {
+			while(i<len1) {
+				System.out.print(s1[i] + " ");
+				++i;
+			}	
+		}
+		
+		if(j!=len2) {
+			while(j<len2) {
+				System.out.print(s2[j] + " ");
+				++j;
+			}	
+		}
+		
+		System.out.println("");
+	}
+	
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			
+			String str = br.readLine().trim();
+			String temp[] = str.split(" ");
+			
+			int len1 = Integer.parseInt(temp[0]);
+			int len2 = Integer.parseInt(temp[1]);
+
+			str = br.readLine().trim();
+			String s1[] = str.split(" ");
+			
+			str = br.readLine().trim();
+			String s2[] = str.split(" ");
+			
+			mergeSort(s1,s2,len1,len2);
+		}		
+		br.close();
+    }
+}
