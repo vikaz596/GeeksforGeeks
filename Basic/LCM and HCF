@@ -1,0 +1,35 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under basic problem section with same name
+*/
+
+import java.util.Scanner;
+
+class GFG {
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int a = stdin.nextInt();
+			int b = stdin.nextInt();
+		
+			int i = Math.min(a,b);
+			int limit = a*b;
+			int hcf=0;
+			int lcm=0;
+		
+			for( ; i<=limit ; i++) {
+				if(i%a==0 && i%b==0) {
+					lcm = i;
+					hcf = limit/lcm;
+					break;
+				}		
+			}
+			
+			System.out.println(lcm +" "+ hcf);
+		}	
+		
+		stdin.close();
+	}
+}
