@@ -1,0 +1,59 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+class GFG {
+	
+	public static boolean checkTriplet(int arr[], int n) {
+		Arrays.sort(arr);
+		
+		for(int i=0 ; i<n ; i++)
+			arr[i] = arr[i]*arr[i];
+	
+		for (int i = n-1; i >= 2; i--) {
+			// To find the other two elements, start two index
+			// variables from two corners of the array and move
+			// them toward each other
+			int l = 0; // index of the first element in arr[0..i-1]
+			int r = i-1; // index of the last element in arr[0..i-1]
+			while (l < r) {
+				// A triplet found
+				if (arr[l] + arr[r] == arr[i])
+					return true;
+ 
+				// Else either move 'l' or 'r'
+				if(arr[l] + arr[r] < arr[i])
+					l++;
+				else
+					r--;    
+			}
+		}
+ 
+		// If we reach here, then no triplet found
+		return false;
+	}
+	
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int arr[] = new int[n];
+			
+			for(int i=0 ; i<n ; i++)
+				arr[i] = stdin.nextInt();
+			
+			if(checkTriplet(arr,n))
+				System.out.println("Yes");
+			else
+				System.out.println("No");
+		}
+		
+		stdin.close();
+	}
+}
