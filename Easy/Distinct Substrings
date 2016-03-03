@@ -1,0 +1,32 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+class GFG {
+
+	public static void main (String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) { 
+			String str = br.readLine().trim();
+			HashMap<String,Boolean> hm = new HashMap<String,Boolean>();
+			int len = str.length();
+			
+			for(int i=0 ; i<len-1 ; i++) {
+				String temp = str.charAt(i) + "" + str.charAt(i+1);
+				hm.put(temp,true);
+			}
+			
+			System.out.println(hm.size());
+			
+		}
+		
+		br.close();
+	}
+}
