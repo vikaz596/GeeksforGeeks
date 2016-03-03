@@ -1,0 +1,61 @@
+/**
+* created by VIKAS SINGH
+* on 3 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+class GFG {
+	
+	public static void findMinCoins(int arr[], int m, int v) {
+		int table[] = new int[v+1];
+		int pot[] = new int[v+1];
+		Arrays.fill(table,Integer.MAX_VALUE);
+		table[0]=0;
+		pot[0]=0;
+		
+		int spy=0;
+		for(int i=1 ; i<=v ; i++) {
+			for(int j=0 ; j<m ; j++) {
+				if(arr[j] <= i) {
+					int temp = table[i-arr[j]];
+					if(temp != Integer.MAX_VALUE && (temp+1)<table[i]) {
+						table[i] = temp+1;
+						pot[i]=arr[j];
+					}	
+				}
+			}
+		}
+		
+		int min = table[v];
+		int i=v;
+		int ans[] = new int[min];
+		int j=0;
+		while(min>0) {
+			ans[j] = pot[i];
+			i = i-pot[i];
+			min--;
+			j++;
+		}
+		
+		for(int z=ans.length-1 ; z>=0 ; --z)
+			System.out.print(ans[z] + " ");
+		
+		System.out.println("");
+	}
+	
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			
+			int num = Integer.parseInt(br.readLine().trim());
+			int arr[] = {1,2,5,10,20,50,100,500,1000};
+			findMinCoins(arr,9,num);
+		}		
+		br.close();
+    }
+}
