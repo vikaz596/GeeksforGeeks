@@ -1,0 +1,74 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+	
+	public static String ans="";
+	
+	public static void printJumpingNumbers(int i, int n, String str, int latest, int len) {
+		
+		if(i>n || str.length()>len)
+			return;
+		
+		if(str.length()==len && check(i)) 
+			ans = ans + i + " "; 
+		
+		if(latest==0)
+			latest++;
+		for(int z=latest-1 ; z<=(latest+1) ; z++) {				
+			str += z;
+			printJumpingNumbers(Integer.parseInt(str),n,str,z,len);
+			str = i+"";
+		}
+	}
+	
+	public static boolean check(int i) {
+		String str = i+"";
+		int len = str.length();
+		if(len==0)
+			return false;
+		if(len==1)
+			return true;
+		
+		int a=0;
+		int b=0;
+		boolean temp=true;
+		for(int z=0 ; z<len-1 ; z++) {
+			a = Integer.parseInt(str.charAt(z)+"");
+			b = Integer.parseInt(str.charAt(z+1)+"");
+			if(a==b) {
+				temp=false;
+				break;
+			}	
+			if(Math.abs(a-b)>1)
+				temp = false;
+		}
+		
+		return temp;
+	}
+
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			ans="";
+			int n = stdin.nextInt();
+			
+			System.out.print("0 ");
+			int testLength = Integer.toString(n).length();
+			for(int i=1 ; i<=9 ; i++) {
+				for(int k=1 ; k<=testLength ; k++)
+					printJumpingNumbers(i,n,i+"",i,k);
+			}	
+			
+			System.out.println(ans.trim());
+			//System.out.println("");	
+		}	
+		stdin.close();
+	}
+}
