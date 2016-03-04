@@ -1,0 +1,31 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class Solution {
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			double a = stdin.nextDouble();
+			double b = stdin.nextDouble();
+			double c = stdin.nextDouble();
+			
+			double count=1;
+			double ans = 1;
+			
+			while(count<=b) {
+				ans = (ans*(Math.pow(a,count)%c))%c;
+				--b;
+			}
+			
+			System.out.println((long)ans);
+		
+		}
+	}
+}	
