@@ -1,0 +1,102 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+	public static String str="";
+	
+	public static void perm(int arr[], int m, int n) {
+		if(m>n)
+			return;
+		
+		if(m==n)
+			addToAns(arr);
+		
+		else {
+			for(int i=m ; i<=n ; i++) {
+				swap(arr,i,m);
+				perm(arr,m+1,n);
+				swap(arr,i,m);
+			}
+		}
+	}
+	
+	private static void addToAns(int arr[]) {
+		String temp="";
+		for(int i=0 ; i<arr.length ; i++)
+			temp += arr[i];
+		
+		str += temp + " ";
+	}
+	
+	private static void swap(int arr[], int i, int m) {
+		int temp = arr[i];
+		arr[i] = arr[m];
+		arr[m] = temp;
+	}
+	
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			str="";
+			int n = stdin.nextInt();
+			int n2 = n;
+			int len = Integer.toString(n).length();
+			
+			int arr[] = new int[len];
+			int i=0;
+			while(n2>0) {
+				arr[i]=n2%10;
+				n2 = n2/10;
+				i++;
+			}
+			
+			perm(arr,0,len-1);
+			
+			//System.out.println(str);
+			
+			String s[] = str.trim().split(" ");
+			
+			int x = s.length;
+			//System.out.println("X : " + x);
+			
+			int ans[] = new int[x];
+			
+			for(int z=0 ; z<x ; z++)
+				ans[z] = Integer.parseInt(s[z]);
+			
+			Arrays.sort(ans);
+			int remDuplicate[] = new int[x];
+			
+			int emp=-1;
+			int y=0;
+			for(int z=0 ; z<x ; z++) {
+				if(emp==ans[z])
+					continue;
+				emp = ans[z];
+				remDuplicate[y] = ans[z];
+				y++;
+			}
+			
+			if(remDuplicate[y-1]==n) {
+				System.out.println("not possible");
+			}
+			else {
+				for(int z=0 ; z<y-1 ; z++) {
+					if(remDuplicate[z]==n) {
+						System.out.println(remDuplicate[z+1]);
+						break;
+					}
+				}	
+			}
+		}	
+		stdin.close();
+	}
+}
