@@ -1,0 +1,38 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static long getDiscontinousOnes(int n) {
+		long dpZeroes[] = new long[n];
+		long dpOnes[] = new long[n];
+		
+		// index 0 represent String with size 1
+		dpZeroes[0] = 1;
+		dpOnes[0] = 1;
+		
+		for(int i=1 ; i<n ; i++) {
+			dpZeroes[i] = (dpZeroes[i-1] + dpOnes[i-1])%1000000007;
+			dpOnes[i] = dpZeroes[i-1];
+		}
+			
+		return (dpZeroes[n-1] + dpOnes[n-1])%1000000007;	
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			
+			System.out.println(getDiscontinousOnes(n));
+		}
+		stdin.close();
+	}
+}	
