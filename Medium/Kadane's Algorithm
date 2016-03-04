@@ -1,0 +1,44 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+    
+	public static long maxSubArray(int arr[]) {
+		int len = arr.length;
+		long maxSoFar = arr[0];
+		long maxTillHere = arr[0];
+		
+		for(int i=1 ; i<len ; i++) {
+			maxTillHere = Math.max(arr[i],(maxTillHere + arr[i]));
+			if(maxTillHere>maxSoFar)
+				maxSoFar = maxTillHere;
+		}
+		
+		return maxSoFar;
+	}
+
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+		
+		int testCases = stdin.nextInt();
+		
+		for(int t=0 ; t<testCases ; t++) {
+        
+			int n = stdin.nextInt();
+			int arr[] = new int[n];
+			
+			for(int i=0 ; i<n ; i++)
+				arr[i] = stdin.nextInt();
+			
+			System.out.println(maxSubArray(arr));
+	
+		}	
+		
+		stdin.close();
+    }
+}
