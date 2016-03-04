@@ -1,0 +1,52 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+	
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		char arr[] = {'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t!=testCases ; ++t) {
+			int n = stdin.nextInt();
+			if(n==1) {
+				System.out.println("A");
+				continue;
+			}	
+			
+			String ans="";
+			
+			
+			boolean mark = false;
+			while(n>0) {
+				int temp = n%26;
+				//System.out.println("temp : " + temp);
+				
+				if(mark) {
+					if(temp==0)
+						temp = 26;
+					
+					ans += arr[temp-1];
+					mark = false;
+				}
+				else
+					ans += arr[temp];
+				
+				double check = (double)n/26;
+				if(check%1==0) {
+					mark = true;
+					//System.out.println("check : " + check);
+				}	
+				
+				n = n/26;
+			}
+			System.out.println(new StringBuffer(ans).reverse().toString());
+		}
+		stdin.close();	
+	}
+}
