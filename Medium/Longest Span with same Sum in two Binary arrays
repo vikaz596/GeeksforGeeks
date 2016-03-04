@@ -1,0 +1,67 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static int getLongestSameSpan(int arr1[], int arr2[]) {
+		int n = arr1.length;
+		int dp[] = new int[n+1];
+		int max=0;
+		
+		dp[0] = 0;
+		
+		int count1=0;
+		int count2=0;
+		for(int i=1 ; i<=n ; i++) {
+			for(int j=0 ; j<=(n-i) ; j++) {
+				int k = j;
+				count1 = 0;
+				count2 = 0;
+				while(k < j+i) {
+					if(arr1[k] == 1)
+						count1++;
+					if(arr2[k] == 1)
+						count2++;
+					
+					k++;
+				}
+				if(count1==count2 && dp[i]<count1) {
+					dp[i] = i;
+					if(max<dp[i])
+						max = dp[i];	
+				}
+			}
+		}	
+		
+		/*for(int i=0 ; i<=n ; i++)
+			System.out.print(dp[i] + " ");
+		
+		System.out.println("");*/
+		return max;
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int arr1[] = new int[n];
+			int arr2[] = new int[n];
+			
+			for(int i=0 ; i<n ; i++)
+				arr1[i] = stdin.nextInt();
+			
+			for(int i=0 ; i<n ; i++)
+				arr2[i] = stdin.nextInt();
+			
+			System.out.println(getLongestSameSpan(arr1,arr2));
+		}
+		stdin.close();
+	}
+}	
