@@ -1,0 +1,53 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int arr[] = new int[n];
+			int odd[] = new int[n];
+			int even[] = new int[n];
+			
+			int oddd=0;
+			int evenn=0;
+			for(int i=0 ; i<n ; i++) {
+				arr[i] = stdin.nextInt();
+				if(arr[i]%2==0)
+					evenn++;
+				else
+					oddd++;
+			}	
+			
+			int e=0;
+			int o=0;
+			for(int i=0 ; i<n ; i++) {
+				if(arr[i]%2==0) {
+					even[e]=arr[i];
+					e++;
+				}
+				else {
+					odd[o]=arr[i];
+					o++;
+				}	
+			}
+			
+			for(int i=0 ; i<evenn ; i++)
+				System.out.print(even[i] + " ");
+			
+			for(int i=0 ; i<oddd ; i++)
+				System.out.print(odd[i] + " ");
+			
+			System.out.println("");
+		}	
+		stdin.close();
+	}
+}
