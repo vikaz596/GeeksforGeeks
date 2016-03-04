@@ -1,0 +1,52 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int len = stdin.nextInt();
+			stdin.nextLine();
+			String str = stdin.nextLine();
+			String strUpper = "";
+			String strLower = "";
+			for(int i=0 ; i<len ; i++) {
+				if(Character.isUpperCase(str.charAt(i)))
+					strUpper += str.charAt(i);
+				else
+					strLower += str.charAt(i);
+			}
+			
+			char su[] = strUpper.toCharArray();
+			char sl[] = strLower.toCharArray();
+			
+			Arrays.sort(su);
+			Arrays.sort(sl);
+			
+			int indexU = 0;
+			int indexL = 0;
+			for(int i=0 ; i<len ; i++) {
+				if(Character.isUpperCase(str.charAt(i))) {
+					System.out.print(su[indexU]);
+					indexU++;
+				}
+				else {
+					System.out.print(sl[indexL]);
+					indexL++;
+				}	
+			}
+			
+			System.out.println("");
+		}
+		stdin.close();
+	}
+}	
