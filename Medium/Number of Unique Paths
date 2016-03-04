@@ -1,0 +1,40 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+	
+	public static long findWays(int row, int col) {
+		long dp[][] = new long[row][col];
+		
+		for(int r=0 ; r<row ; r++)  // base case
+			dp[r][0] = 1;
+		
+		for(int c=0 ; c<col ; c++)  // base case
+			dp[0][c] = 1;
+		
+		for(int i=1 ; i<row ; i++) {
+			for(int j=1 ; j<col ; j++)
+				dp[i][j] = dp[i-1][j] + dp[i][j-1];
+		}
+			
+		return dp[row-1][col-1];
+	}
+
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+        
+			int row = stdin.nextInt();
+			int col = stdin.nextInt();
+			
+			System.out.println(findWays(row,col));
+		}	
+		stdin.close();
+    }
+}
