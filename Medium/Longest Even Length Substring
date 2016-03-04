@@ -1,0 +1,46 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static int getRequiredLength(String str) {
+		int n = str.length();
+		int sum[] = new int[n+1]; // To store cumulative sum from first digit to nth digit
+		sum[0] = 0;
+
+		/* Store cumulative sum of digits from first to last digit */
+		for (int i = 1; i <= n; i++)
+			sum[i] = sum[i-1] + Integer.parseInt(str.charAt(i-1)+""); /* convert chars to int */
+
+		int ans = 0; // initialize result
+
+		/* consider all even length substrings one by one */
+		for (int len = 2; len <= n; len += 2) {
+			for (int i = 0; i <= n-len; i++) {
+				int j = i + len - 1;
+
+				/* Sum of first and second half is same than update ans */
+				if (sum[i+len/2] - sum[i] == sum[i+len] - sum[i+len/2])
+					ans = Math.max(ans, len);
+			}
+		}
+		return ans;
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		for(int t=0 ; t<testCases ; t++) {
+			String str = stdin.nextLine();
+			System.out.println(getRequiredLength(str));
+		}
+		stdin.close();
+	}
+}	
