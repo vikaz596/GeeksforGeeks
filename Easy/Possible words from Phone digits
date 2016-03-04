@@ -1,0 +1,47 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+	
+	public static String keypad[][] = new String[][]{{},{},{"a","b","c"},{"d","e","f"},{"g","h","i"},{"j","k","l"},{"m","n","o"},{"p","q","r","s"},{"t","u","v"},{"w","x","y","z"}};
+	public static int input[];
+	public static int totalKeys;
+	
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			input = new int[n];
+			
+			for(int i=0 ; i<n ; i++)
+				input[i] = stdin.nextInt();
+			
+			totalKeys = n-1;
+			
+			generateAllWords(0,"");
+			
+			System.out.println("");
+		}	
+		stdin.close();
+	}
+	
+	public static void generateAllWords(int i, String str) {
+		if(i<=totalKeys) {
+			int len = keypad[input[i]].length-1;
+			String s1;
+			for(int j=0 ; j<=len ; j++) {
+				s1 = str;
+				s1 += keypad[input[i]][j];
+				generateAllWords(i+1,s1);
+			}
+		}
+		else
+			System.out.print(str + " ");
+	}
+}
