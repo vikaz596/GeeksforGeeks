@@ -1,0 +1,41 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static long ncr[][];
+	
+	public static long findNCR(int n, int r) {
+		
+		for(int i=0 ; i<=n ; i++) {
+			for(int j=0 ; j<=i && j<=r; j++)
+				if(j==0 || j==i)
+					ncr[i][j] = 1;
+				
+				else
+					ncr[i][j] = (ncr[i-1][j-1] + ncr[i-1][j])%1000000007;
+		}		
+		
+		return ncr[n][r];
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+
+			int n = stdin.nextInt();
+			int r = stdin.nextInt();
+			
+			ncr = new long[n+1][r+1];
+			
+			System.out.println(findNCR(n,r));
+		}
+	}
+}	
