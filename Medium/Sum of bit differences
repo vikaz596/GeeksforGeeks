@@ -1,0 +1,64 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+	public static int bitDifference(int arr[], int n) {
+		int count=0;
+		for(int i=0 ; i<n-1 ; ++i) {
+			for(int j=i+1 ; j<n ; ++j) {
+				int a = arr[i];
+				int b = arr[j];
+				count += helperFunction(a, b);
+			}
+		}
+		
+		return count;
+	}
+	
+	public static int helperFunction(int a, int b) {
+		String str1 = Integer.toBinaryString(a);
+		String str2 = Integer.toBinaryString(b);
+		
+		if(str1.length()<str2.length()) {
+			for(int i=str1.length() ; i<str2.length() ; i++)
+				str1 = "0" + str1;
+		}
+		else if(str1.length()>str2.length()) {
+			for(int i=str2.length() ; i<str1.length() ; i++)
+				str2 = "0" + str2;
+		}
+		
+		int len = str1.length();
+		int count = 0;
+		
+		for(int i=0 ; i<len ; i++) {
+			if(str1.charAt(i) != str2.charAt(i))
+				count++;
+		}
+		
+		return (count + count);
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int arr[] = new int[n];
+			
+			for(int i=0 ; i<n ; i++)
+				arr[i] = stdin.nextInt();
+			
+			System.out.println(bitDifference(arr,n));
+		}		
+		stdin.close();
+	}
+}	
