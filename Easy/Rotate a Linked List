@@ -1,0 +1,46 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+class gfg
+{
+Node rotate(Node head,int k)
+ {
+    if(k==0)
+		return head;
+		
+		Node temp = head;
+		Node start = head;
+		Node prev = null;
+		Node newHead = head;
+		
+		if(temp == null)
+			return null;
+		
+		int count=1;
+		while(temp!=null) {
+			prev = temp;
+			temp = temp.next;
+			count++;
+			if(count==k+1 && temp==null)
+			    return newHead;
+			    
+			if(count==k+1) {
+				newHead = temp;
+				prev.next = null;
+			}
+		}
+		
+		temp = start;
+		while(temp!=null) {
+			prev.next = temp;
+			prev = temp;
+			temp = temp.next;
+		}
+		prev.next = temp;
+		
+		return newHead;
+ }
+}
