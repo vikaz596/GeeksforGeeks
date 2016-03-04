@@ -1,0 +1,29 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+void pairWiseSwap(struct node *head)
+{
+
+    struct node *temp = head;
+ 
+    /* Traverse further only if there are at-least two nodes left */
+    while (temp != NULL && temp->next != NULL)
+    {
+        /* Swap data of node with its next node's data */
+        swap(&temp->data, &temp->next->data);
+ 
+        /* Move temp by 2 for the next pair */
+        temp = temp->next->next;
+    }
+}
+
+void swap(int *a, int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
