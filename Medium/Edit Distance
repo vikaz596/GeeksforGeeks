@@ -1,0 +1,71 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Solution {
+	
+	public static int findCost(String str1, String str2, int len1, int len2) {
+		// it will store cost at each substructure of the problem
+		// len+1 is becoz we will consider empty string also
+		int dp[][] = new int[len1+1][len2+1];
+		
+		if(len1==0)  // len1==0 then only option is insert all  string 2 character
+			return len2;
+		
+		if(len2==0) // vice versa of above
+			return len1;
+			
+		for(int i=1 ; i<=len2 ; i++) // String 1 is null, len1==0 then only option is insert all string 2 character
+			dp[0][i] = i;
+		
+		for(int i=1 ; i<=len1 ; i++) // String 2 is null, len2==0 then only option is insert all string 1 character
+			dp[i][0] = i;
+		
+		dp[0][0] = 0;
+		
+			
+		for(int i=1 ; i<=len1 ; i++) {
+			for(int j=1 ; j<=len2 ; j++) {
+				if(str1.charAt(i-1)==str2.charAt(j-1))
+						dp[i][j] = dp[i-1][j-1];
+
+				else 
+					dp[i][j] = 1 + min(dp[i][j-1],dp[i-1][j],dp[i-1][j-1]);
+			}
+		}			
+		return dp[len1][len2];	
+	}
+	
+	public static int min(int a, int b, int c) {
+		if(a<=b && a<=c)
+			return a;
+		else if(b<=a && b<=c)
+			return b;
+		else
+			return c;
+	}
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			String x = br.readLine().trim();
+			String s[] = x.split(" ");
+			int len1 = Integer.parseInt(s[0]);
+			int len2 = Integer.parseInt(s[1]);
+			
+			x = br.readLine().trim();
+			String ss[] = x.split(" ");
+			String str1 = ss[0];
+			String str2 = ss[1];
+			
+			System.out.println(findCost(str1,str2,len1,len2));
+		}
+		br.close();
+	}
+}
