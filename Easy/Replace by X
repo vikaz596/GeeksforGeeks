@@ -1,0 +1,39 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Solution {
+	
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			String str = br.readLine().trim();
+			String pattern = br.readLine().trim();
+			
+			int len = pattern.length();
+			int n = str.length();
+			boolean check = true;
+			for(int i=0 ; i<n ; i++) {
+				if(i == str.indexOf(pattern,i)) {
+					if(check) {
+						System.out.print("X");
+						check = false;
+					}
+					i = i + len - 1;
+					continue;
+				}	
+				System.out.print(str.charAt(i));
+				check = true;
+			}
+			
+			System.out.println("");
+		}	
+		br.close();
+	}
+}	
