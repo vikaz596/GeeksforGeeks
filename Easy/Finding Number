@@ -1,0 +1,37 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+	
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int k = stdin.nextInt();
+			
+			int arr[] = new int[n];
+			
+			int index=0;
+			boolean check=true;   // not found
+			for(int i=0 ; i<n ; i++) {
+				arr[i] = stdin.nextInt();
+				if(arr[i]==k) {
+					check=false;
+					index = i;
+				}	
+			}
+			
+			if(check)
+				System.out.println("OOPS! NOT FOUND");
+			else
+				System.out.println(index);
+		}	
+		stdin.close();
+	}
+}
