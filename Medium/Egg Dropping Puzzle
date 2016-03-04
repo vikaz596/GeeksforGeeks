@@ -1,0 +1,51 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+
+	public static int minTrailsReq(int eggs, int floors) {
+		int dp[][] = new int[eggs+1][floors+1];
+		
+		for(int i=1 ; i<=eggs ; i++) {
+			dp[i][1] = 1;   // no matter how many eggs u have if only 1 floor then min trials is 1
+			dp[i][0] = 0;	// 0 trials req if floor is 0
+		}	
+		
+		for(int i=1 ; i<=floors ; i++)
+			dp[1][i] = i;  // if u have only 1 egg then u dont want to take risk and start from 1st floor therefore trials = floor value
+		
+		for(int i=2 ; i<=eggs ; i++) {
+			for(int j=2 ; j<=floors ; j++) {
+				dp[i][j] = Integer.MAX_VALUE;
+				for(int z=1 ; z<=j ; z++) {
+					int temp = 1 + Math.max(dp[i-1][z-1],dp[i][j-z]);
+					if(temp < dp[i][j])
+						dp[i][j] = temp;
+				}
+			}
+		}
+		
+		return dp[eggs][floors];
+	}
+		
+		
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+
+			int eggs = stdin.nextInt();
+			int floors = stdin.nextInt();
+			
+			System.out.println(minTrailsReq(eggs,floors));
+		}
+		stdin.close();
+	}
+}	
