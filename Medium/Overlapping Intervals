@@ -1,0 +1,49 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+#define lim 101
+
+void overlap(int arr[], int x, int y)
+{
+    if(x==y){if(arr[x]==0)arr[x]=2;return;}
+  for(int i=x; i<y; i++)arr[i]=1;    
+}
+
+int main() {
+	int t;
+	cin>>t; //t is test cases
+	while(t--)
+	{
+	    int n; int mark[lim];
+	    memset(mark, 0, sizeof(mark));
+	    cin>>n;
+	    for(int i=1; i<=n; i++)
+	    {
+	        int x, y;
+	        cin>>x>>y;
+	        overlap(mark,x,y);
+	    }
+	    
+	    
+	    for(int i=0; i<lim; i)
+	    {
+	        if(mark[i]==2){cout<<i<<" "<<i<<" "; i++; }
+	        while(i<lim && mark[i]==0)i++;
+	        if(mark[i]==2){cout<<i<<" "<<i<<" "; i++; continue;}
+	        int start = i; i++;
+	        while(i<lim && mark[i]==1)i++;
+	        int end = i;  i++; 
+	        if(end>lim)break;
+	        cout<<start<<" "<<end<<" ";
+	        
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
