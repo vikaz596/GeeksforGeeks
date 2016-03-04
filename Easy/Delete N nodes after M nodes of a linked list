@@ -1,0 +1,54 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+class gfg {
+    void linkdelete(Node head,int m,int n) {
+        Node temp = head;
+		Node prev = null;
+		int countM=0;
+		int countN=0;
+		
+		while(temp!=null) {
+			if(countM<m) {
+				countM++;
+				prev = temp;
+				temp = temp.next;
+				continue;
+			}
+			if(countM==m) {
+				countN=1;
+				if(countN>n) {
+					prev = temp;
+					temp = temp.next;
+					countM=0;
+					continue;
+				}
+				if(countN==n) {
+					prev.next = temp.next;
+					prev = temp;
+					temp = temp.next;
+					countM=0;
+					continue;
+				}
+				while(countN < n && temp!=null) {
+					//System.out.println("del : " + temp.data);
+					temp = temp.next;
+					countN++;
+					continue;
+				}
+				if(temp == null) {
+					prev.next = null;
+					break;
+				}	
+				
+				prev.next = temp.next;
+				countM=0;
+				temp = temp.next;
+			}	
+		}
+        
+    }
+}
