@@ -1,0 +1,67 @@
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+	public static void printNextPerm(int arr[], int n) {
+		int k = -1;
+		int l = 0;
+		for(int i=0 ; i<n-1 ; i++) {
+			if(arr[i+1]>arr[i])  // when all sorted in decreasing order then next perm will be sorted array
+				k = i;			// if thats not the case then store index i;
+		}
+		if(k == -1) {
+			Arrays.sort(arr);
+			printArray(arr);
+			return;
+		}
+		
+		// step 2
+		for(int i=k+1 ; i<n ; i++) {
+			if(arr[i]>arr[k])
+				l = i;
+		}
+		
+		// step 3 - swap
+		int temp = arr[l];
+		arr[l] = arr[k];
+		arr[k] = temp;
+		
+		// step 4 reverse from k+1 to end
+		String str = "";
+		for(int i=k+1 ; i<n ; i++)
+			str += arr[i] + " ";
+		
+		String s[] = str.split(" ");
+		
+		int j = s.length - 1;
+		for(int i=k+1 ; i<n ; i++) {
+			arr[i] = Integer.parseInt(s[j]);
+			--j;
+		}
+
+		printArray(arr);		
+	}
+	
+	public static void printArray(int arr[]) {
+		int len = arr.length;
+		for(int i=0 ; i<len ; i++)
+			System.out.print(arr[i] + " ");
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int arr[] = new int[n];
+			
+			for(int i=0 ; i<n ; i++)
+				arr[i] = stdin.nextInt();
+			
+			printNextPerm(arr,n);
+			System.out.println("");
+		}
+	}
+}	
