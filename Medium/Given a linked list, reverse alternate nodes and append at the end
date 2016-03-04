@@ -1,0 +1,37 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+class gfg
+{
+void  rearrange(Node odd)
+  {
+    if (odd == null || odd.next == null || odd.next.next == null)
+        return;
+ 
+    Node even = odd.next;
+ 
+    odd.next = odd.next.next;
+ 
+    odd = odd.next;
+ 
+    even.next = null;
+ 
+    while (odd!=null && odd.next!=null)
+    {       
+       Node temp = odd.next.next;
+ 
+       odd.next.next = even;
+       even = odd.next;
+ 
+       odd.next = temp;
+ 
+       if (temp != null)
+         odd = temp;
+    }
+ 
+    odd.next = even;
+    }
+}
