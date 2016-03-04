@@ -1,0 +1,55 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+public class GFG {
+	
+	public static int findPath(int arr[][], int i, int j, int k) {
+		// You got no money left 
+		if(k<0)
+			return 0;
+		
+		// Array out of bounds
+		if(i<0 || j<0)
+			return 0;
+		
+		// Desired situation
+		if(i==0 && j==0 && k==0)
+			return 1;
+		
+		// Reached destination but cudnt fulfill coin condition
+		if(i==0 && j==0)
+			return 0;
+		
+		else { // this else is divided into 1 if and 1 if-else to avoid array out of bounds
+			if(i==0)
+				return findPath(arr,i,j-1,k-arr[i][j-1]);
+			if(j==0)
+				return findPath(arr,i-1,j,k-arr[i-1][j]);
+			else
+				return findPath(arr,i-1,j,k-arr[i-1][j]) + findPath(arr,i,j-1,k-arr[i][j-1]);
+		}	
+	}
+	
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int k = stdin.nextInt();
+			int n = stdin.nextInt();
+			
+			int arr[][] = new int[n][n];
+			for(int i=0 ; i<n ; i++) {
+				for(int j=0 ; j<n ; j++) {
+					arr[j][i] = stdin.nextInt();
+				}
+			}
+			
+			System.out.println(findPath(arr,n-1,n-1,k-arr[n-1][n-1]));
+		}	
+		stdin.close();
+	}
+}
