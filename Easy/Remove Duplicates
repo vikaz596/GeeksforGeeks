@@ -1,0 +1,32 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Solution {
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		for(int t=0 ; t<testCases ; t++) {
+			String str = stdin.nextLine();
+			HashMap<Character,Boolean> hm = new HashMap<Character,Boolean>();
+			int len = str.length();
+			for(int i=0 ; i<len ; i++) {
+				if(hm.containsKey(str.charAt(i)))
+					continue;
+				else {
+					System.out.print(str.charAt(i));
+					hm.put(str.charAt(i),true);
+				}
+			}
+			System.out.println("");
+		}	
+		stdin.close();
+	}
+}	
