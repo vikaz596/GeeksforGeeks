@@ -1,0 +1,60 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static int distSq(int x1, int x2, int y1, int y2) {
+		return ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+	}
+	
+	public static boolean isSquare(int x1, int x2, int x3, int x4, int y1, int y2, int y3, int y4) {
+		int d12 = distSq(x1,x2,y1,y2);
+		int d23 = distSq(x2,x3,y2,y3); 
+		int d34 = distSq(x3,x4,y3,y4);
+		int d41 = distSq(x4,x1,y4,y1);
+		int d13 = distSq(x1,x3,y1,y3);
+		int d24 = distSq(x2,x4,y2,y4);
+		
+		if(d12 == d23 && d23 == d34 && d34 == d41 && d13 == d24)
+			return true;
+		
+		else if(d23 == d13 && d13 == d41 && d41 == d24 && d12 == d34)
+			return true;
+		
+		else if(d12 == d24 && d24 == d34 && d34 == d13 && d41 == d23)
+			return true;
+		
+		else
+			return false;
+	}
+		
+		
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+
+			int x1 = stdin.nextInt();
+			int y1 = stdin.nextInt();
+			int x2 = stdin.nextInt();
+			int y2 = stdin.nextInt();
+			int x3 = stdin.nextInt();
+			int y3 = stdin.nextInt();
+			int x4 = stdin.nextInt();
+			int y4 = stdin.nextInt();
+			
+			if(isSquare(x1,x2,x3,x4,y1,y2,y3,y4))
+				System.out.println("Yes");
+			else
+				System.out.println("No");
+		}
+		stdin.close();
+	}
+}	
