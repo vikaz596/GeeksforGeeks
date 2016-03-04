@@ -1,0 +1,56 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+	public static int findNumbers(long a, long b) {
+		int count=0;
+		for(long i=a ; i<=b ; ++i) {
+			if(checkPrime(i))
+				count++;
+		}
+		
+		return count;
+	}
+	
+	public static boolean checkPrime(long n) {
+		if(n<=1)
+			return false;
+		
+		if(n==2 || n==3)
+			return true;
+		
+		if(n%2==0)
+			return false;
+		
+		long x = (long)Math.sqrt(n);
+		for(long i=3 ; i<=x ; ++i) {
+			if(n%i==0)
+				return false;
+		}
+		
+		return true;
+	}
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			double num1 = stdin.nextDouble();
+			double num2 = stdin.nextDouble();
+			
+			double a = Math.ceil(Math.sqrt(num1));
+			double b = Math.floor(Math.sqrt(num2));
+			
+			System.out.println(findNumbers((long)a,(long)b));
+		}
+		stdin.close();
+	}
+}	
