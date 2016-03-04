@@ -1,0 +1,59 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+	public static long dp[][];
+	
+	public static long sumOfNDigits(int n, int k) {
+		// all digits used up and sum reached desired k
+		if(n==0 && k==0)
+			return 1;
+		
+		// either digits of number is used up or k reached negative
+		if(n<0 || k<0)
+			return 0;
+		
+		if(dp[n][k]!=-1)
+			return dp[n][k];
+		
+		long count = 0;
+		for(int i=0 ; i<=9 ; i++)
+			count += sumOfNDigits(n-1,k-i);
+		
+		dp[n][k] = count%1000000007;
+		return dp[n][k];
+	}
+	
+	public static void main (String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int n = stdin.nextInt();
+			int k = stdin.nextInt();
+			
+			long count=0;
+			dp = new long[n+1][k+1];
+			
+			for (long[] row : dp)
+				Arrays.fill(row, -1);
+			
+			for(int i=1 ; i<=9 ; i++)
+				if(k-i>=0)
+					count += sumOfNDigits(n-1,k-i);
+			
+			if(count==0)
+				System.out.println("-1");
+			else
+				System.out.println(count%1000000007);
+		}
+		
+		stdin.close();
+	}
+}
