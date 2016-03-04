@@ -1,0 +1,37 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	
+	public static void main(String args[]) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t!=testCases ; ++t) {
+			int n = stdin.nextInt();
+			
+			int arr[] = new int[n];
+			
+			for(int i=0 ; i!=n ; ++i)
+				arr[i] = stdin.nextInt();
+			
+			Arrays.sort(arr);
+			
+			int count=0;
+			for(int i=1 ; i<n ; i+=2) {
+				System.out.print(arr[i] + " " + arr[i-1] + " ");
+				count+=2;
+			}
+			if(count!=n)
+				System.out.print(arr[n-1]);
+			
+			System.out.println("");
+		}
+		stdin.close();	
+	}
+}
