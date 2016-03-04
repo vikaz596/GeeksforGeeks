@@ -1,0 +1,29 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+class gfg
+{
+Node reverse(Node head, int k) {
+    Node curr = head;
+    Node n = null;
+    Node prev = null;
+    int count=0;
+    
+    while(curr!=null && count<k) {
+        n = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = n;
+        count++;
+    }
+    
+    if(n != null)
+        head.next = reverse(n,k);
+    
+    return prev;
+}
+    
+}
