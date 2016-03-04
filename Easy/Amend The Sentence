@@ -1,0 +1,34 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Easy problem section with same name
+*/
+
+import java.util.Scanner;
+
+public class GFG {
+	
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int testCases = stdin.nextInt();
+		stdin.nextLine();
+		for(int t=0 ; t<testCases ; t++) {
+			String s = stdin.nextLine();
+			
+			int len = s.length();
+			
+			for(int i=0 ; i<len ; i++) {
+				int temp = (int)s.charAt(i);
+				if(temp<97 && i==0)
+					System.out.print(Character.toLowerCase(s.charAt(i)));
+				else if(temp<97)
+					System.out.print(" " + Character.toLowerCase(s.charAt(i)));
+				else
+					System.out.print(s.charAt(i));
+			}
+			
+			System.out.println("");
+		}	
+		stdin.close();
+	}
+}
