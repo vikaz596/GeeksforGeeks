@@ -1,0 +1,41 @@
+/**
+* created by VIKAS SINGH
+* on 4 MAR 2016
+* For problem statement visit geeksforgeeks.com under Medium problem section with same name
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Solution {
+	
+	public static long countStairWays(int n) {
+		long dp[] = new long[n+3];
+		
+		if(n==0 || n==1)
+			return 1;
+		
+		dp[0] = 1; // only 1 way dont take any step
+		dp[1] = 1;
+		
+		int count=2;
+		for(int i=2 ; i<=n ; i+=2) {
+			dp[i] = count;
+			dp[i+1] = count;
+			count++;
+		}
+		
+		return dp[n];	
+	}
+	
+	public static void main (String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int testCases = Integer.parseInt(br.readLine().trim());
+		for(int t=0 ; t<testCases ; t++) {
+			int n = Integer.parseInt(br.readLine().trim());
+			System.out.println(countStairWays(n));
+		}
+		
+		br.close();
+	}
+}
