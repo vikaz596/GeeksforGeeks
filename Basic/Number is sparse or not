@@ -1,0 +1,36 @@
+/**
+* created by VIKAS SINGH
+* on 14 Mar 2016
+* Problem statement can be found on geeksforgeeks basic section with same name
+*/
+
+// Spare Number
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int a = stdin.nextInt();
+			
+			String strA = Integer.toBinaryString(a);
+			
+			int n = strA.length();
+			int count=0;
+			for(int i=0 ; i<n-1 ; i++) {
+				if(strA.charAt(i) == '1' && strA.charAt(i+1) == '1')
+					count++;
+			}
+			
+			if(count==0)
+				System.out.println("1");
+			else
+				System.out.println("0");
+		}
+		stdin.close();
+	}
+}	
