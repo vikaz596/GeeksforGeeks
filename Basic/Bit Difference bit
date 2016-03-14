@@ -1,0 +1,46 @@
+/**
+* created by VIKAS SINGH
+* on 14 Mar 2016
+* Problem statement can be found on geeksforgeeks basic section with same name
+*/
+
+// Bit Difference
+
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+	
+    public static void main(String[] args){
+        Scanner stdin = new Scanner(new InputStreamReader(System.in));
+		int testCases = stdin.nextInt();
+		for(int t=0 ; t<testCases ; t++) {
+			int a = stdin.nextInt();
+			int b = stdin.nextInt();
+			String strA = Integer.toBinaryString(a);
+			String strB = Integer.toBinaryString(b);
+			
+			int lenA = strA.length();
+			int lenB = strB.length();
+			
+			if(lenA>lenB) {
+				for(int i=lenB ; i<lenA ; i++)
+					strB = "0" + strB;
+			}
+			else if(lenA<lenB){
+				for(int i=lenA ; i<lenB ; i++)
+					strA = "0" + strA;
+			}
+			
+			int n = strA.length();
+			int count=0;
+			for(int i=0 ; i<n ; i++) {
+				if(strA.charAt(i)!=strB.charAt(i))
+					count++;
+			}
+			
+			System.out.println(count);
+		}
+		stdin.close();
+	}
+}	
